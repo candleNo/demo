@@ -1,22 +1,19 @@
-import re
+
 def lee_sort(arr):
-  newArr = []
-  index = 0
-
-  isList = re.search("list", str(type(arr)))
-  if isList is not None:
-    while index < len(arr):
-      max = 0
-      for item in range(index, len(arr)-1):
-        if(arr[item] < arr[item + 1]):
-          max = arr[item + 1]
-        else:
-          max = arr[item]
-      newArr.append(max)
-      index = index + 1
-      print(index)
-  return newArr
-
-arr = [1,9,8,12,6] 
-
-print(lee_sort(arr))
+  newList = []
+  if "list" in str(type(arr)):
+    if len(arr) > 0:
+      while len(arr) is not 0:
+        index = 0
+        maxNum = 0
+        
+        for item in range(0, len(arr)):
+          if maxNum < arr[item]:
+            maxNum = arr[item]
+            index = item
+        newList.append(arr.pop(index))
+      return newList
+    else:
+      return "这是一个空数组"
+  else:
+    return "这并不是一个列表"
